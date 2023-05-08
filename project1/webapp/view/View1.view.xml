@@ -1,8 +1,89 @@
-<mvc:View controllerName="project1.controller.View1"
+<mvc:View xmlns:core="sap.ui.core" controllerName="project1.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
     <Page id="page" title="{i18n>title}">
         <content>
+            <Panel >
+                <f:SimpleForm >
+                    <f:content>
+                        <Label text="Change Event"/>
+                        <Input change="onInputChange" description="Enter &amp; Focus Leave"/>
+
+                        <Label text="Submit Event"/>
+                        <Input submit="onSubmit" description="Enter 키 입력 시에만 발동(내용 변경과 상관없이)"/>
+
+                        <Label text="liveChange Event"/>
+                        <Input liveChange="onLiveChange" description="모든 입력 관련 키 입력 시 실행"/>
+
+                        <Label text="liveChange Property Binding"/>
+                        <Input liveChange="onLiveChange" value="{view>/value}" valueLiveUpdate="true" description="LPB"/>
+
+                        <Label text="ValueHelp Event"/>
+                        <Input showValueHelp="true" valueHelpRequest="handleValueHelp" description="제안"/>
+
+                        <Label text="suggest Event"/>
+                        <Input showSuggestion="true" suggestionItems="{view>/ValueHelpData}" description="진짜 제안">
+                            <suggestionItems>
+                                <core:Item text="{view>Name}"/>
+                            </suggestionItems>
+                        </Input>
+                        <Input showSuggestion="true" suggestionItems="{view>/ValueHelpData}" description="또 다른 제안" suggest="onSuggest">
+                            <suggestionItems>
+                                <core:Item text="{view>Name}"/>
+                            </suggestionItems>
+                        </Input>
+                    </f:content>
+                </f:SimpleForm>
+                <f:SimpleForm >
+                    <f:content>
+                        <Label text="liveChange 응용"/>
+                        <Input showClearIcon="true" liveChange="onLiveChange2" type="Password" description="길이는 10자리 이상"/>
+                    </f:content>
+                </f:SimpleForm>
+
+                <f:SimpleForm title="data binding TYPE">
+                    <f:content>
+                        <Label text="Integer"/>
+                        <Input value="{
+                            path : 'view>/integer',
+                            type : 'sap.ui.model.type.Integer',
+                            constraints :    {
+                                minimum : 10,
+                                maximum : 100
+                            },
+                            formatOptions : {
+                                minIntegerDigits    : 9,
+                                emptyString         : '빈값'
+                            } 
+                        }" />
+                        <Text text="값 : {view>/integer}"/>
+                        <Text text="{= typeof(${view>/integer})}"/>
+
+                        <Label text="Date"/>
+                        <DatePicker value="{
+                            path: 'view>/date',
+                            type: 'sap.ui.model.type.Date'
+                        }"/>
+                        <Text text="값 : {view>/date}"/>
+                        <Label text="Short"/>
+                        <DatePicker value="{
+                            path  : 'view>/date', 
+                            type  : 'sap.ui.model.type.Date',
+                            style : 'short'
+                        }"/>
+                        <Label text="Custom"/>
+                        <DatePicker value="{
+                            path  : 'view>/date', 
+                            type  : 'sap.ui.model.type.Date',
+                            formatOptions : {
+                                pattern : 'yyyy-mm-dd'
+                            }
+                        }"/>
+                    </f:content>
+                </f:SimpleForm>
+            </Panel>
         </content>
     </Page>
 </mvc:View>

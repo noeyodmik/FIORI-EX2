@@ -19,14 +19,3 @@ server:
           - path: /sap
             url: http://sapmento.mento.co.kr:8001/
             client: '100'
-    - name: fiori-tools-appreload
-      afterMiddleware: compression
-      configuration:
-        port: 35729
-        path: webapp
-        delay: 300
-    - name: fiori-tools-preview
-      afterMiddleware: fiori-tools-appreload
-      configuration:
-        component: project1
-        ui5Theme: sap_horizon
