@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZGW_CALC_C03_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Result" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Indexnum"/>
+                </Key>
+                <Property Name="Indexnum" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="INDEXNUM" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Field1" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="FIELD1" sap:sortable="false"/>
+                <Property Name="Field2" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="FIELD2" sap:sortable="false"/>
+                <Property Name="Operator" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="OPERATOR" sap:sortable="false"/>
+                <Property Name="Resultnum" Type="Edm.Decimal" Nullable="false" Precision="10" Scale="2" sap:unicode="false" sap:label="RESULTNUM" sap:sortable="false"/>
+                <Property Name="Username" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="User Name" sap:sortable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZGW_CALC_C03_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ResultSet" EntityType="ZGW_CALC_C03_SRV.Result" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZGW_CALC_C03_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/sap/ZGW_CALC_C03_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
